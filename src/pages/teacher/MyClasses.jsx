@@ -1,14 +1,22 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '../../components/layout/DashboardLayout';
 import Card from '../../components/common/Card';
 import Button from '../../components/common/Button';
 import Badge from '../../components/common/Badge';
 import Modal from '../../components/common/Modal';
-import { FiUsers, FiBook, FiClock, FiCalendar, FiEye } from 'react-icons/fi';
+import Input from '../../components/common/Input';
+import { FiUsers, FiBook, FiClock, FiCalendar, FiEye, FiUserCheck, FiAward, FiFileText, FiEdit2, FiPlus, FiX } from 'react-icons/fi';
+import toast from 'react-hot-toast';
 
 const MyClasses = () => {
+  const navigate = useNavigate();
   const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [showManageModal, setShowManageModal] = useState(false);
   const [selectedClass, setSelectedClass] = useState(null);
+  const [editingTopics, setEditingTopics] = useState(false);
+  const [newTopic, setNewTopic] = useState('');
+  const [classNotes, setClassNotes] = useState('');
 
   const [classes] = useState([
     {
@@ -83,6 +91,27 @@ const MyClasses = () => {
   const handleViewDetails = (classItem) => {
     setSelectedClass(classItem);
     setShowDetailsModal(true);
+  };
+
+  const handleManageClass = (classItem) => {
+    setSelectedClass(classItem);
+    setClassNotes('');
+    setEditingTopics(false);
+    setNewTopic('');
+    setShowManageModal(true);
+  };
+
+  const handleAddTopic = () => {
+    if (newTopic.trim()) {
+      toast.success(`Topic "${newTopic}" added successfully!`);
+      setNewTopic('');
+      setEditingTopics(false);
+    }
+  };
+
+  const handleSaveNotes = () => {
+    toast.success('Class notes saved successfully!');
+    setClassNotes('');
   };
 
   const totalStudents = classes.reduce((sum, c) => sum + c.students, 0);
@@ -205,7 +234,11 @@ const MyClasses = () => {
                     <FiEye className="mr-2 w-4 h-4" />
                     View Details
                   </Button>
-                  <Button size="sm" className="flex-1">
+                  <Button
+                    size="sm"
+                    className="flex-1"
+                    onClick={() => handleManageClass(classItem)}
+                  >
                     Manage Class
                   </Button>
                 </div>
@@ -302,6 +335,198 @@ const MyClasses = () => {
                   <p className="text-2xl font-bold text-orange-600">{selectedClass.pendingAssignments}</p>
                 </div>
                 <div className="p-3 bg-red-50 rounded-lg">
+                  <p className="text-sm text-gray-600">Upcoming Tests</p>
+                  <p className="text-2xl font-bold text-red-600">{selectedClass.upcomingTests}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
+
+      {/* Manage Class Modal */}
+      <Modal
+        isOpen={showManageModal}
+        onClose={() => {
+          setShowManageModal(false);
+          setSelectedClass(null);
+          setEditingTopics(false);
+          setNewTopic('');
+          setClassNotes('');
+        }}
+        title="Manage Class"
+        size="lg"
+      >
+        {selectedClass && (
+          <div className="space-y-6">
+            {/* Class Header */}
+            <div className="p-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg text-white">
+              <h3 className="text-2xl font-bold mb-1">
+                {selectedClass.subject} - Class {selectedClass.className}
+              </h3>
+              <p className="text-blue-100">{selectedClass.students} students enrolled</p>
+            </div>
+
+            {/* Quick Actions */}
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Quick Actions</h4>
+              <div className="grid grid-cols-2 gap-3">
+                <Button
+                  variant="outline"
+                  className="justify-start"
+                  onClick={() => {
+                    setShowManageModal(false);
+                    navigate('/teacher/attendance');
+                  }}
+                >
+                  <FiUserCheck className="mr-2 w-5 h-5" />
+                  Mark Attendance
+                </Button>
+                <Button
+                  variant="outline"
+                  className="justify-start"
+                  onClick={() => {
+                    setShowManageModal(false);
+                    navigate('/teacher/grades');
+                  }}
+                >
+                  <FiAward className="mr-2 w-5 h-5" />
+                  Enter Grades
+                </Button>
+                <Button
+                  variant="outline"
+                  className="justify-start"
+                  onClick={() => {
+                    setShowManageModal(false);
+                    navigate('/teacher/assignments');
+                  }}
+                >
+                  <FiFileText className="mr-2 w-5 h-5" />
+                  Create Assignment
+                </Button>
+                <Button
+                  variant="outline"
+                  className="justify-start"
+                  onClick={() => {
+                    setShowManageModal(false);
+                    navigate('/teacher/students');
+                  }}
+                >
+                  <FiUsers className="mr-2 w-5 h-5" />
+                  View Students
+                </Button>
+              </div>
+            </div>
+
+            {/* Class Performance */}
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Current Performance</h4>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <p className="text-sm text-gray-600 mb-1">Attendance Rate</p>
+                  <p className="text-2xl font-bold text-green-600">{selectedClass.avgAttendance}%</p>
+                  <p className="text-xs text-gray-500 mt-1">Class average</p>
+                </div>
+                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p className="text-sm text-gray-600 mb-1">Average Grade</p>
+                  <p className="text-2xl font-bold text-blue-600">{selectedClass.avgGrade}%</p>
+                  <p className="text-xs text-gray-500 mt-1">Class average</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Topics Management */}
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="font-semibold text-gray-900">Topics Covered</h4>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => setEditingTopics(!editingTopics)}
+                >
+                  <FiEdit2 className="mr-1 w-4 h-4" />
+                  {editingTopics ? 'Cancel' : 'Add Topic'}
+                </Button>
+              </div>
+
+              {editingTopics && (
+                <div className="mb-3 p-3 bg-gray-50 rounded-lg">
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Enter new topic name..."
+                      value={newTopic}
+                      onChange={(e) => setNewTopic(e.target.value)}
+                      onKeyPress={(e) => e.key === 'Enter' && handleAddTopic()}
+                    />
+                    <Button onClick={handleAddTopic}>
+                      <FiPlus className="mr-1 w-4 h-4" />
+                      Add
+                    </Button>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex flex-wrap gap-2">
+                {selectedClass.topics.map((topic, index) => (
+                  <div key={index} className="flex items-center gap-2 px-3 py-2 bg-blue-50 border border-blue-200 rounded-lg">
+                    <span className="text-sm font-medium text-blue-700">{topic}</span>
+                    <button
+                      onClick={() => toast.success(`Topic "${topic}" removed`)}
+                      className="text-blue-600 hover:text-red-600 transition-colors"
+                      title="Remove topic"
+                    >
+                      <FiX className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Class Notes/Announcements */}
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Class Notes / Announcements</h4>
+              <textarea
+                value={classNotes}
+                onChange={(e) => setClassNotes(e.target.value)}
+                placeholder="Add notes or announcements for this class..."
+                rows="4"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+              <div className="mt-2 flex justify-end">
+                <Button size="sm" onClick={handleSaveNotes} disabled={!classNotes.trim()}>
+                  Save Notes
+                </Button>
+              </div>
+            </div>
+
+            {/* Upcoming Schedule */}
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Upcoming Classes</h4>
+              <div className="space-y-2">
+                {selectedClass.schedule.slice(0, 3).map((slot, index) => (
+                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <FiCalendar className="w-5 h-5 text-blue-600" />
+                      <div>
+                        <p className="font-medium text-gray-900">{slot.day}</p>
+                        <p className="text-sm text-gray-600">{slot.time}</p>
+                      </div>
+                    </div>
+                    <Badge variant="info">Room {slot.room}</Badge>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pending Work */}
+            <div className="border-t pt-4">
+              <h4 className="font-semibold text-gray-900 mb-3">Pending Work</h4>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                  <p className="text-sm text-gray-600">Assignments to Review</p>
+                  <p className="text-2xl font-bold text-orange-600">{selectedClass.pendingAssignments}</p>
+                </div>
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
                   <p className="text-sm text-gray-600">Upcoming Tests</p>
                   <p className="text-2xl font-bold text-red-600">{selectedClass.upcomingTests}</p>
                 </div>
