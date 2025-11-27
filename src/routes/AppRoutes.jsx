@@ -8,6 +8,9 @@ import Login from '../pages/auth/Login';
 // Super Admin Pages
 import SuperAdminDashboard from '../pages/superadmin/Dashboard';
 import Schools from '../pages/superadmin/Schools';
+import Subscriptions from '../pages/superadmin/Subscriptions';
+import Analytics from '../pages/superadmin/Analytics';
+import Settings from '../pages/superadmin/Settings';
 
 // Admin Pages
 import AdminDashboard from '../pages/admin/Dashboard';
@@ -63,6 +66,30 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute allowedRoles={['super_admin']}>
               <Schools />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/superadmin/subscriptions"
+          element={
+            <ProtectedRoute allowedRoles={['super_admin']}>
+              <Subscriptions />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/superadmin/analytics"
+          element={
+            <ProtectedRoute allowedRoles={['super_admin']}>
+              <Analytics />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/superadmin/settings"
+          element={
+            <ProtectedRoute allowedRoles={['super_admin']}>
+              <Settings />
             </ProtectedRoute>
           }
         />
