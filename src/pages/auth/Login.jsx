@@ -61,26 +61,81 @@ const Login = () => {
     { role: 'Parent', email: 'robert.doe@email.com', password: 'Parent@123' },
   ];
 
-  const handleDemoLogin = (email, password) => {
-    setFormData({ email, password });
+  const handleDemoLogin = async (email, password) => {
+    setLoading(true);
+
+    try {
+      const result = await login(email, password);
+
+      if (result.success) {
+        toast.success('Login successful!');
+
+        const dashboards = {
+          super_admin: '/superadmin/dashboard',
+          admin: '/admin/dashboard',
+          teacher: '/teacher/dashboard',
+          student: '/student/dashboard',
+          parent: '/parent/dashboard',
+        };
+
+        setTimeout(() => {
+          navigate(dashboards[result.user.role] || '/');
+        }, 500);
+      } else {
+        toast.error(result.error || 'Login failed');
+      }
+    } catch (error) {
+      toast.error('An error occurred during login');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 p-4">
       <Toaster position="top-right" />
 
       <div className="max-w-md w-full bg-white rounded-xl shadow-2xl p-8">
         {/* Logo and Title */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
             <span className="text-white font-bold text-2xl">S</span>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">SkoolMaster</h1>
-          <p className="text-gray-600">Sign in to your account</p>
+          <p className="text-gray-600">School Management System</p>
+        </div>
+
+        {/* Demo Login Buttons */}
+        <div className="space-y-4 mb-8">
+          <p className="text-sm font-semibold text-gray-700 text-center mb-3">
+            Quick Demo Login - Click to Login as:
+          </p>
+          <div className="space-y-3">
+            {demoCredentials.map((cred) => (
+              <button
+                key={cred.role}
+                onClick={() => handleDemoLogin(cred.email, cred.password)}
+                disabled={loading}
+                className="w-full px-4 py-3 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+              >
+                Login as {cred.role}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="relative my-8">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300"></div>
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="px-2 bg-white text-gray-500">Or login manually</span>
+          </div>
         </div>
 
         {/* Login Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <Input
             label="Email"
             type="email"
@@ -110,25 +165,6 @@ const Login = () => {
             Sign In
           </Button>
         </form>
-
-        {/* Demo Credentials */}
-        <div className="mt-8">
-          <p className="text-sm text-gray-600 text-center mb-4">
-            Demo Credentials (Click to fill)
-          </p>
-          <div className="space-y-2">
-            {demoCredentials.map((cred) => (
-              <button
-                key={cred.role}
-                onClick={() => handleDemoLogin(cred.email, cred.password)}
-                className="w-full text-left px-4 py-2 text-sm bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <span className="font-medium text-gray-900">{cred.role}:</span>{' '}
-                <span className="text-gray-600">{cred.email}</span>
-              </button>
-            ))}
-          </div>
-        </div>
 
         {/* Footer */}
         <p className="mt-8 text-center text-xs text-gray-500">
