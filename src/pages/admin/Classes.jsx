@@ -165,8 +165,8 @@ const Classes = () => {
       key: 'name',
       label: 'Class',
       sortable: true,
-      render: (value) => (
-        <span className="font-semibold text-gray-900">Class {value}</span>
+      render: (row) => (
+        <span className="font-semibold text-gray-900">Class {row.name}</span>
       )
     },
     {
@@ -178,10 +178,10 @@ const Classes = () => {
       key: 'students',
       label: 'Students',
       sortable: true,
-      render: (value) => (
+      render: (row) => (
         <div className="flex items-center gap-2">
           <FiUsers className="w-4 h-4 text-gray-500" />
-          <span>{value}</span>
+          <span>{row.students}</span>
         </div>
       )
     },
@@ -193,16 +193,16 @@ const Classes = () => {
     {
       key: 'status',
       label: 'Status',
-      render: (value) => (
-        <Badge variant={value === 'active' ? 'success' : 'error'} className="capitalize">
-          {value}
+      render: (row) => (
+        <Badge variant={row.status === 'active' ? 'success' : 'error'} className="capitalize">
+          {row.status}
         </Badge>
       )
     },
     {
       key: 'actions',
       label: 'Actions',
-      render: (_, row) => (
+      render: (row) => (
         <div className="flex gap-2">
           <button
             onClick={() => openEditModal(row)}

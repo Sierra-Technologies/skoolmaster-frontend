@@ -208,9 +208,9 @@ const Subjects = () => {
       key: 'name',
       label: 'Subject Name',
       sortable: true,
-      render: (value, row) => (
+      render: (row) => (
         <div>
-          <div className="font-semibold text-gray-900">{value}</div>
+          <div className="font-semibold text-gray-900">{row.name}</div>
           <div className="text-sm text-gray-500">{row.code}</div>
         </div>
       )
@@ -224,9 +224,9 @@ const Subjects = () => {
       key: 'type',
       label: 'Type',
       sortable: true,
-      render: (value) => (
-        <Badge variant={value === 'core' ? 'info' : 'success'} className="capitalize">
-          {value}
+      render: (row) => (
+        <Badge variant={row.type === 'core' ? 'info' : 'success'} className="capitalize">
+          {row.type}
         </Badge>
       )
     },
@@ -238,10 +238,10 @@ const Subjects = () => {
     {
       key: 'teachers',
       label: 'Teachers',
-      render: (teachers) => (
+      render: (row) => (
         <div className="text-sm">
-          {teachers.length > 0 ? (
-            <span className="text-blue-600 font-medium">{teachers.length} assigned</span>
+          {row.teachers.length > 0 ? (
+            <span className="text-blue-600 font-medium">{row.teachers.length} assigned</span>
           ) : (
             <span className="text-gray-400">No teachers</span>
           )}
@@ -251,7 +251,7 @@ const Subjects = () => {
     {
       key: 'actions',
       label: 'Actions',
-      render: (_, row) => (
+      render: (row) => (
         <div className="flex gap-2">
           <button
             onClick={() => openAssignTeacherModal(row)}

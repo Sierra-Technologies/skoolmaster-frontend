@@ -164,23 +164,23 @@ const Admissions = () => {
     {
       key: 'status',
       label: 'Status',
-      render: (value) => (
+      render: (row) => (
         <Badge
           variant={
-            value === 'approved' ? 'success' :
-            value === 'rejected' ? 'error' :
+            row.status === 'approved' ? 'success' :
+            row.status === 'rejected' ? 'error' :
             'warning'
           }
           className="capitalize"
         >
-          {value}
+          {row.status}
         </Badge>
       )
     },
     {
       key: 'actions',
       label: 'Actions',
-      render: (_, row) => (
+      render: (row) => (
         <div className="flex gap-2">
           <button
             onClick={() => handleViewApplication(row)}

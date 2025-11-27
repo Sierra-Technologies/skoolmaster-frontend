@@ -170,20 +170,20 @@ const Exams = () => {
       key: 'date',
       label: 'Date',
       sortable: true,
-      render: (value) => (
+      render: (row) => (
         <div className="flex items-center gap-2">
           <FiCalendar className="w-4 h-4 text-gray-500" />
-          <span>{new Date(value).toLocaleDateString()}</span>
+          <span>{new Date(row.date).toLocaleDateString()}</span>
         </div>
       )
     },
     {
       key: 'startTime',
       label: 'Time',
-      render: (value, row) => (
+      render: (row) => (
         <div className="flex items-center gap-2">
           <FiClock className="w-4 h-4 text-gray-500" />
-          <span>{value} - {row.endTime}</span>
+          <span>{row.startTime} - {row.endTime}</span>
         </div>
       )
     },
@@ -195,23 +195,23 @@ const Exams = () => {
     {
       key: 'status',
       label: 'Status',
-      render: (value) => (
+      render: (row) => (
         <Badge
           variant={
-            value === 'upcoming' ? 'info' :
-            value === 'ongoing' ? 'warning' :
+            row.status === 'upcoming' ? 'info' :
+            row.status === 'ongoing' ? 'warning' :
             'success'
           }
           className="capitalize"
         >
-          {value}
+          {row.status}
         </Badge>
       )
     },
     {
       key: 'actions',
       label: 'Actions',
-      render: (_, row) => (
+      render: (row) => (
         <div className="flex gap-2">
           <button
             onClick={() => openEditModal(row)}

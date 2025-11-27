@@ -144,22 +144,22 @@ const Fees = () => {
       key: 'amount',
       label: 'Total Amount',
       sortable: true,
-      render: (value) => `$${value.toLocaleString()}`
+      render: (row) => `$${row.amount.toLocaleString()}`
     },
     {
       key: 'paid',
       label: 'Paid',
       sortable: true,
-      render: (value) => (
-        <span className="text-green-600 font-semibold">${value.toLocaleString()}</span>
+      render: (row) => (
+        <span className="text-green-600 font-semibold">${row.paid.toLocaleString()}</span>
       )
     },
     {
       key: 'pending',
       label: 'Pending',
       sortable: true,
-      render: (value) => (
-        <span className="text-red-600 font-semibold">${value.toLocaleString()}</span>
+      render: (row) => (
+        <span className="text-red-600 font-semibold">${row.pending.toLocaleString()}</span>
       )
     },
     {
@@ -170,24 +170,24 @@ const Fees = () => {
     {
       key: 'status',
       label: 'Status',
-      render: (value) => (
+      render: (row) => (
         <Badge
           variant={
-            value === 'paid' ? 'success' :
-            value === 'partial' ? 'warning' :
-            value === 'overdue' ? 'error' :
+            row.status === 'paid' ? 'success' :
+            row.status === 'partial' ? 'warning' :
+            row.status === 'overdue' ? 'error' :
             'info'
           }
           className="capitalize"
         >
-          {value}
+          {row.status}
         </Badge>
       )
     },
     {
       key: 'actions',
       label: 'Actions',
-      render: (_, row) => (
+      render: (row) => (
         <Button
           size="sm"
           disabled={row.status === 'paid'}
