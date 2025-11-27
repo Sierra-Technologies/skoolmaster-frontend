@@ -29,6 +29,12 @@ import AdminSettings from '../pages/admin/Settings';
 
 // Teacher Pages
 import TeacherDashboard from '../pages/teacher/Dashboard';
+import TeacherMyClasses from '../pages/teacher/MyClasses';
+import TeacherAttendance from '../pages/teacher/Attendance';
+import TeacherGrades from '../pages/teacher/Grades';
+import TeacherAssignments from '../pages/teacher/Assignments';
+import TeacherTimetable from '../pages/teacher/Timetable';
+import TeacherStudents from '../pages/teacher/Students';
 
 // Student Pages
 import StudentDashboard from '../pages/student/Dashboard';
@@ -216,6 +222,54 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute allowedRoles={['teacher']}>
               <TeacherDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teacher/my-classes"
+          element={
+            <ProtectedRoute allowedRoles={['teacher']}>
+              <TeacherMyClasses />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teacher/attendance"
+          element={
+            <ProtectedRoute allowedRoles={['teacher']}>
+              <TeacherAttendance />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teacher/grades"
+          element={
+            <ProtectedRoute allowedRoles={['teacher']}>
+              <TeacherGrades />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teacher/assignments"
+          element={
+            <ProtectedRoute allowedRoles={['teacher']}>
+              <TeacherAssignments />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teacher/timetable"
+          element={
+            <ProtectedRoute allowedRoles={['teacher']}>
+              <TeacherTimetable />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teacher/students"
+          element={
+            <ProtectedRoute allowedRoles={['teacher']}>
+              <TeacherStudents />
             </ProtectedRoute>
           }
         />

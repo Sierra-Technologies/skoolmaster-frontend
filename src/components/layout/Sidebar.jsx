@@ -52,13 +52,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       case 'teacher':
         return [
           { icon: <FiHome />, label: 'Dashboard', path: '/teacher/dashboard' },
-          { icon: <FiBook />, label: 'My Classes', path: '/teacher/classes' },
+          { icon: <FiBook />, label: 'My Classes', path: '/teacher/my-classes' },
           { icon: <FiUserCheck />, label: 'Attendance', path: '/teacher/attendance' },
-          { icon: <FiAward />, label: 'Gradebook', path: '/teacher/gradebook' },
+          { icon: <FiAward />, label: 'Grades', path: '/teacher/grades' },
           { icon: <FiFileText />, label: 'Assignments', path: '/teacher/assignments' },
           { icon: <FiClock />, label: 'Timetable', path: '/teacher/timetable' },
           { icon: <FiUsers />, label: 'Students', path: '/teacher/students' },
-          { icon: <FiMessageSquare />, label: 'Messages', path: '/teacher/messages' },
         ];
 
       case 'student':
