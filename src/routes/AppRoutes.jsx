@@ -16,6 +16,13 @@ import Settings from '../pages/superadmin/Settings';
 import AdminDashboard from '../pages/admin/Dashboard';
 import Students from '../pages/admin/Students';
 import Teachers from '../pages/admin/Teachers';
+import Classes from '../pages/admin/Classes';
+import Attendance from '../pages/admin/Attendance';
+import Exams from '../pages/admin/Exams';
+import Fees from '../pages/admin/Fees';
+import Timetable from '../pages/admin/Timetable';
+import Reports from '../pages/admin/Reports';
+import AdminSettings from '../pages/admin/Settings';
 
 // Teacher Pages
 import TeacherDashboard from '../pages/teacher/Dashboard';
@@ -116,6 +123,62 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute allowedRoles={['admin']}>
               <Teachers />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/classes"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Classes />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/attendance"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Attendance />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/exams"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Exams />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/fees"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Fees />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/timetable"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Timetable />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/reports"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Reports />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/settings"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <AdminSettings />
             </ProtectedRoute>
           }
         />
