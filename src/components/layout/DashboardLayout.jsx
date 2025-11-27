@@ -9,10 +9,10 @@ const DashboardLayout = ({ children }) => {
     <div className="min-h-screen bg-gray-50">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="lg:ml-64">
+      <div className="lg:ml-64 min-h-screen flex flex-col">
         <Navbar onMenuClick={() => setSidebarOpen(true)} />
 
-        <main className="p-4 md:p-6 lg:p-8">
+        <main className="flex-1 p-4 md:p-6 lg:p-8">
           {children}
         </main>
       </div>
