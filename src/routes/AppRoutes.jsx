@@ -17,9 +17,12 @@ import AdminDashboard from '../pages/admin/Dashboard';
 import Students from '../pages/admin/Students';
 import Teachers from '../pages/admin/Teachers';
 import Classes from '../pages/admin/Classes';
+import Subjects from '../pages/admin/Subjects';
+import Grades from '../pages/admin/Grades';
 import Attendance from '../pages/admin/Attendance';
 import Exams from '../pages/admin/Exams';
 import Fees from '../pages/admin/Fees';
+import Admissions from '../pages/admin/Admissions';
 import Timetable from '../pages/admin/Timetable';
 import Reports from '../pages/admin/Reports';
 import AdminSettings from '../pages/admin/Settings';
@@ -135,6 +138,22 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path="/admin/subjects"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Subjects />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/grades"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Grades />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/admin/attendance"
           element={
             <ProtectedRoute allowedRoles={['admin']}>
@@ -155,6 +174,14 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute allowedRoles={['admin']}>
               <Fees />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/admissions"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Admissions />
             </ProtectedRoute>
           }
         />

@@ -13,54 +13,68 @@ const Classes = () => {
   const [classes, setClasses] = useState([
     {
       id: 1,
-      name: 'Class 10-A',
+      name: '10-A',
       grade: '10',
       section: 'A',
-      teacher: 'John Smith',
-      teacherId: 1,
-      subject: 'Mathematics',
+      classTeacher: 'John Smith',
+      classTeacherId: 1,
       students: 35,
       room: 'Room 201',
-      schedule: 'Mon, Wed, Fri - 9:00 AM',
       status: 'active'
     },
     {
       id: 2,
-      name: 'Class 10-B',
+      name: '10-B',
       grade: '10',
       section: 'B',
-      teacher: 'Sarah Johnson',
-      teacherId: 2,
-      subject: 'Science',
+      classTeacher: 'Sarah Johnson',
+      classTeacherId: 2,
       students: 32,
       room: 'Room 202',
-      schedule: 'Tue, Thu - 10:00 AM',
       status: 'active'
     },
     {
       id: 3,
-      name: 'Class 11-A',
+      name: '11-A',
       grade: '11',
       section: 'A',
-      teacher: 'Michael Brown',
-      teacherId: 3,
-      subject: 'English',
+      classTeacher: 'Michael Brown',
+      classTeacherId: 3,
       students: 30,
       room: 'Room 301',
-      schedule: 'Mon, Wed, Fri - 11:00 AM',
       status: 'active'
     },
     {
       id: 4,
-      name: 'Class 12-A',
+      name: '11-B',
+      grade: '11',
+      section: 'B',
+      classTeacher: 'Emily Davis',
+      classTeacherId: 4,
+      students: 28,
+      room: 'Room 302',
+      status: 'active'
+    },
+    {
+      id: 5,
+      name: '12-A',
       grade: '12',
       section: 'A',
-      teacher: 'Emily Davis',
-      teacherId: 4,
-      subject: 'Physics',
-      students: 28,
+      classTeacher: 'David Wilson',
+      classTeacherId: 5,
+      students: 33,
       room: 'Room 401',
-      schedule: 'Tue, Thu, Fri - 2:00 PM',
+      status: 'active'
+    },
+    {
+      id: 6,
+      name: '12-B',
+      grade: '12',
+      section: 'B',
+      classTeacher: 'Lisa Anderson',
+      classTeacherId: 6,
+      students: 31,
+      room: 'Room 402',
       status: 'active'
     }
   ]);
@@ -69,14 +83,11 @@ const Classes = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedClass, setSelectedClass] = useState(null);
   const [formData, setFormData] = useState({
-    name: '',
     grade: '',
     section: '',
-    teacher: '',
-    subject: '',
+    classTeacher: '',
     students: 0,
     room: '',
-    schedule: '',
     status: 'active'
   });
 
@@ -87,14 +98,11 @@ const Classes = () => {
 
   const resetForm = () => {
     setFormData({
-      name: '',
       grade: '',
       section: '',
-      teacher: '',
-      subject: '',
+      classTeacher: '',
       students: 0,
       room: '',
-      schedule: '',
       status: 'active'
     });
   };
@@ -103,8 +111,9 @@ const Classes = () => {
     e.preventDefault();
     const newClass = {
       id: classes.length + 1,
+      name: `${formData.grade}-${formData.section}`,
       ...formData,
-      teacherId: classes.length + 1,
+      classTeacherId: classes.length + 1,
       students: parseInt(formData.students) || 0
     };
     setClasses([...classes, newClass]);
@@ -117,7 +126,12 @@ const Classes = () => {
     e.preventDefault();
     setClasses(classes.map(cls =>
       cls.id === selectedClass.id
-        ? { ...cls, ...formData, students: parseInt(formData.students) || 0 }
+        ? {
+            ...cls,
+            name: `${formData.grade}-${formData.section}`,
+            ...formData,
+            students: parseInt(formData.students) || 0
+          }
         : cls
     ));
     setShowEditModal(false);
@@ -136,14 +150,11 @@ const Classes = () => {
   const openEditModal = (classItem) => {
     setSelectedClass(classItem);
     setFormData({
-      name: classItem.name,
       grade: classItem.grade,
       section: classItem.section,
-      teacher: classItem.teacher,
-      subject: classItem.subject,
+      classTeacher: classItem.classTeacher,
       students: classItem.students,
       room: classItem.room,
-      schedule: classItem.schedule,
       status: classItem.status
     });
     setShowEditModal(true);
@@ -152,17 +163,15 @@ const Classes = () => {
   const columns = [
     {
       key: 'name',
-      label: 'Class Name',
-      sortable: true
+      label: 'Class',
+      sortable: true,
+      render: (value) => (
+        <span className="font-semibold text-gray-900">Class {value}</span>
+      )
     },
     {
-      key: 'teacher',
+      key: 'classTeacher',
       label: 'Class Teacher',
-      sortable: true
-    },
-    {
-      key: 'subject',
-      label: 'Subject',
       sortable: true
     },
     {
@@ -180,10 +189,6 @@ const Classes = () => {
       key: 'room',
       label: 'Room',
       sortable: true
-    },
-    {
-      key: 'schedule',
-      label: 'Schedule'
     },
     {
       key: 'status',
@@ -226,6 +231,15 @@ const Classes = () => {
     avgClassSize: Math.round(classes.reduce((sum, cls) => sum + cls.students, 0) / classes.length)
   };
 
+  // Group classes by grade
+  const classesByGrade = classes.reduce((acc, cls) => {
+    if (!acc[cls.grade]) {
+      acc[cls.grade] = [];
+    }
+    acc[cls.grade].push(cls);
+    return acc;
+  }, {});
+
   return (
     <DashboardLayout>
       <div className="space-y-6">
@@ -233,7 +247,7 @@ const Classes = () => {
         <div className="flex justify-between items-center">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Classes Management</h1>
-            <p className="text-gray-600 mt-1">Manage all classes and their schedules</p>
+            <p className="text-gray-600 mt-1">Manage class sections and class teachers</p>
           </div>
           <Button onClick={() => setShowAddModal(true)}>
             <FiPlus className="mr-2" />
@@ -292,8 +306,32 @@ const Classes = () => {
           </Card>
         </div>
 
+        {/* Classes by Grade */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {Object.keys(classesByGrade).sort().map(grade => (
+            <Card key={grade} title={`Grade ${grade}`}>
+              <div className="space-y-3">
+                {classesByGrade[grade].map(cls => (
+                  <div key={cls.id} className="p-3 bg-gray-50 rounded-lg">
+                    <div className="flex justify-between items-start mb-2">
+                      <div>
+                        <p className="font-semibold text-gray-900">Class {cls.name}</p>
+                        <p className="text-sm text-gray-600">{cls.classTeacher}</p>
+                      </div>
+                      <Badge variant="info" size="sm">
+                        {cls.students} students
+                      </Badge>
+                    </div>
+                    <p className="text-xs text-gray-500">{cls.room}</p>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          ))}
+        </div>
+
         {/* Classes Table */}
-        <Card title="All Classes" subtitle="View and manage all classes">
+        <Card title="All Classes" subtitle="View and manage all class sections">
           <Table
             columns={columns}
             data={classes}
@@ -314,44 +352,37 @@ const Classes = () => {
       >
         <form onSubmit={handleAddClass} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input
-              label="Class Name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              placeholder="e.g., Class 10-A"
-              required
-            />
-            <Input
-              label="Grade"
-              name="grade"
-              value={formData.grade}
-              onChange={handleInputChange}
-              placeholder="e.g., 10"
-              required
-            />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Grade
+              </label>
+              <select
+                name="grade"
+                value={formData.grade}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required
+              >
+                <option value="">Select Grade</option>
+                <option value="10">Grade 10</option>
+                <option value="11">Grade 11</option>
+                <option value="12">Grade 12</option>
+              </select>
+            </div>
             <Input
               label="Section"
               name="section"
               value={formData.section}
               onChange={handleInputChange}
-              placeholder="e.g., A"
+              placeholder="e.g., A, B, C"
               required
             />
             <Input
               label="Class Teacher"
-              name="teacher"
-              value={formData.teacher}
+              name="classTeacher"
+              value={formData.classTeacher}
               onChange={handleInputChange}
               placeholder="Teacher name"
-              required
-            />
-            <Input
-              label="Subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleInputChange}
-              placeholder="e.g., Mathematics"
               required
             />
             <Input
@@ -371,14 +402,20 @@ const Classes = () => {
               placeholder="e.g., Room 201"
               required
             />
-            <Input
-              label="Schedule"
-              name="schedule"
-              value={formData.schedule}
-              onChange={handleInputChange}
-              placeholder="e.g., Mon, Wed - 9:00 AM"
-              required
-            />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Status
+              </label>
+              <select
+                name="status"
+                value={formData.status}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
           </div>
 
           <div className="flex gap-3 justify-end pt-4">
@@ -409,44 +446,37 @@ const Classes = () => {
       >
         <form onSubmit={handleEditClass} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input
-              label="Class Name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              placeholder="e.g., Class 10-A"
-              required
-            />
-            <Input
-              label="Grade"
-              name="grade"
-              value={formData.grade}
-              onChange={handleInputChange}
-              placeholder="e.g., 10"
-              required
-            />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Grade
+              </label>
+              <select
+                name="grade"
+                value={formData.grade}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required
+              >
+                <option value="">Select Grade</option>
+                <option value="10">Grade 10</option>
+                <option value="11">Grade 11</option>
+                <option value="12">Grade 12</option>
+              </select>
+            </div>
             <Input
               label="Section"
               name="section"
               value={formData.section}
               onChange={handleInputChange}
-              placeholder="e.g., A"
+              placeholder="e.g., A, B, C"
               required
             />
             <Input
               label="Class Teacher"
-              name="teacher"
-              value={formData.teacher}
+              name="classTeacher"
+              value={formData.classTeacher}
               onChange={handleInputChange}
               placeholder="Teacher name"
-              required
-            />
-            <Input
-              label="Subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleInputChange}
-              placeholder="e.g., Mathematics"
               required
             />
             <Input
@@ -466,14 +496,20 @@ const Classes = () => {
               placeholder="e.g., Room 201"
               required
             />
-            <Input
-              label="Schedule"
-              name="schedule"
-              value={formData.schedule}
-              onChange={handleInputChange}
-              placeholder="e.g., Mon, Wed - 9:00 AM"
-              required
-            />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Status
+              </label>
+              <select
+                name="status"
+                value={formData.status}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
           </div>
 
           <div className="flex gap-3 justify-end pt-4">

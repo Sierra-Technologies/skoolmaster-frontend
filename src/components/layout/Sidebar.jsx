@@ -38,10 +38,13 @@ const Sidebar = ({ isOpen, onClose }) => {
           { icon: <FiUsers />, label: 'Students', path: '/admin/students' },
           { icon: <FiUsers />, label: 'Teachers', path: '/admin/teachers' },
           { icon: <FiBook />, label: 'Classes', path: '/admin/classes' },
+          { icon: <FiBook />, label: 'Subjects', path: '/admin/subjects' },
+          { icon: <FiAward />, label: 'Grades', path: '/admin/grades' },
           { icon: <FiUserCheck />, label: 'Attendance', path: '/admin/attendance' },
           { icon: <FiAward />, label: 'Exams', path: '/admin/exams' },
           { icon: <FiClock />, label: 'Timetable', path: '/admin/timetable' },
           { icon: <FiDollarSign />, label: 'Fees', path: '/admin/fees' },
+          { icon: <FiBriefcase />, label: 'Admissions', path: '/admin/admissions' },
           { icon: <FiFileText />, label: 'Reports', path: '/admin/reports' },
           { icon: <FiSettings />, label: 'Settings', path: '/admin/settings' },
         ];
