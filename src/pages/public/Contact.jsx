@@ -48,7 +48,7 @@ const Contact = () => {
   return (
     <PublicLayout>
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-public-deep to-public-navy overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
@@ -62,7 +62,7 @@ const Contact = () => {
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
             Get in Touch
           </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-public-light max-w-3xl mx-auto">
             Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
         </div>
@@ -152,7 +152,7 @@ const Contact = () => {
               <div className="relative h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl overflow-hidden shadow-xl">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <FiMapPin className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+                    <FiMapPin className="w-16 h-16 text-public-deep mx-auto mb-4" />
                     <p className="text-gray-700 font-medium">Visit Our Office</p>
                     <p className="text-gray-600 text-sm">Interactive map coming soon</p>
                   </div>
@@ -286,7 +286,7 @@ const Contact = () => {
                     {/* Submit Button */}
                     <button
                       type="submit"
-                      className="group w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+                      className="group w-full py-4 bg-gradient-to-r from-public-medium to-public-deep text-white rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-2"
                     >
                       Send Message
                       <FiSend className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -294,9 +294,9 @@ const Contact = () => {
 
                     <p className="text-sm text-gray-600 text-center">
                       By submitting this form, you agree to our{' '}
-                      <button className="text-blue-600 hover:underline">Privacy Policy</button>
+                      <button className="text-public-deep hover:underline">Privacy Policy</button>
                       {' '}and{' '}
-                      <button className="text-blue-600 hover:underline">Terms of Service</button>
+                      <button className="text-public-deep hover:underline">Terms of Service</button>
                     </p>
                   </form>
                 )}

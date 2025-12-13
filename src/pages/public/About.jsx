@@ -18,7 +18,7 @@ const About = () => {
   return (
     <PublicLayout>
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-public-deep to-public-navy overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
@@ -32,7 +32,7 @@ const About = () => {
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
             About SkoolMaster
           </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-public-light max-w-3xl mx-auto">
             Transforming education management with innovative technology
           </p>
         </div>
@@ -76,10 +76,10 @@ const About = () => {
                 { value: '99.9%', label: 'Uptime', icon: <FiShield className="w-6 h-6" /> }
               ].map((stat, index) => (
                 <div key={index} className="group p-8 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-105">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-16 h-16 bg-gradient-to-br from-public-medium to-public-deep rounded-xl flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
                     {stat.icon}
                   </div>
-                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2 text-center">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-public-medium to-public-deep bg-clip-text text-transparent mb-2 text-center">
                     {stat.value}
                   </div>
                   <div className="text-gray-700 text-center font-medium">{stat.label}</div>
@@ -91,14 +91,14 @@ const About = () => {
           {/* Mission & Vision Cards */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Mission */}
-            <div className="relative p-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl text-white overflow-hidden">
+            <div className="relative p-10 bg-gradient-to-br from-public-medium to-public-deep rounded-3xl text-white overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
               <div className="relative">
                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6">
                   <FiTarget className="w-8 h-8" />
                 </div>
                 <h3 className="text-3xl font-bold mb-4">Our Mission</h3>
-                <p className="text-blue-100 text-lg leading-relaxed">
+                <p className="text-public-light text-lg leading-relaxed">
                   To empower educational institutions with innovative technology that simplifies
                   administration, enhances communication, and improves learning outcomes for
                   students worldwide.
@@ -107,14 +107,14 @@ const About = () => {
             </div>
 
             {/* Vision */}
-            <div className="relative p-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl text-white overflow-hidden">
+            <div className="relative p-10 bg-gradient-to-br from-public-navy to-public-darkest rounded-3xl text-white overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
               <div className="relative">
                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-6">
                   <FiGlobe className="w-8 h-8" />
                 </div>
                 <h3 className="text-3xl font-bold mb-4">Our Vision</h3>
-                <p className="text-purple-100 text-lg leading-relaxed">
+                <p className="text-public-light text-lg leading-relaxed">
                   To become the world's most trusted school management platform, transforming
                   education management and creating seamless experiences for schools, teachers,
                   students, and parents globally.
@@ -314,7 +314,7 @@ const About = () => {
                   />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-blue-600 font-medium mb-3">{member.role}</p>
+                <p className="text-public-deep font-medium mb-3">{member.role}</p>
                 <p className="text-gray-600 text-sm">{member.background}</p>
               </div>
             ))}
@@ -326,7 +326,7 @@ const About = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-public-medium to-public-deep text-white rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
             >
               Join Our Team
             </Link>
@@ -335,7 +335,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-public-deep to-public-navy relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px)',
@@ -346,19 +346,19 @@ const About = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Join 500+ Schools Worldwide
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-public-light mb-8">
             Start your journey with SkoolMaster today
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
+              className="px-8 py-4 bg-white text-public-deep rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
             >
               Get Started Free
             </Link>
             <Link
               to="/features"
-              className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all"
+              className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-public-deep transition-all"
             >
               Explore Features
             </Link>

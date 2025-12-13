@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Portal/Dashboard colors (default theme)
         primary: 'var(--color-primary)',
         'primary-dark': 'var(--color-primary-dark)',
         'primary-light': 'var(--color-primary-light)',
@@ -16,6 +17,13 @@ export default {
         warning: 'var(--color-warning)',
         error: 'var(--color-error)',
         info: 'var(--color-info)',
+
+        // Public pages brand colors
+        'public-light': 'var(--color-public-light)',
+        'public-medium': 'var(--color-public-medium)',
+        'public-deep': 'var(--color-public-deep)',
+        'public-navy': 'var(--color-public-navy)',
+        'public-darkest': 'var(--color-public-darkest)',
       },
       animation: {
         'fadeIn': 'fadeIn 0.3s ease-in-out',

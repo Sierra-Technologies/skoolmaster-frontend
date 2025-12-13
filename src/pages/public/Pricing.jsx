@@ -121,7 +121,7 @@ const Pricing = () => {
   return (
     <PublicLayout>
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-public-deep to-public-navy overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
@@ -135,7 +135,7 @@ const Pricing = () => {
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
             Simple, Transparent Pricing
           </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8">
+          <p className="text-xl md:text-2xl text-public-light max-w-3xl mx-auto mb-8">
             Choose the perfect plan for your school. No hidden fees.
           </p>
 
@@ -145,7 +145,7 @@ const Pricing = () => {
               onClick={() => setBillingCycle('monthly')}
               className={`px-6 py-3 rounded-lg font-semibold transition-all ${
                 billingCycle === 'monthly'
-                  ? 'bg-white text-blue-600 shadow-lg'
+                  ? 'bg-white text-public-deep shadow-lg'
                   : 'text-white hover:bg-white/10'
               }`}
             >
@@ -155,7 +155,7 @@ const Pricing = () => {
               onClick={() => setBillingCycle('annual')}
               className={`px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2 ${
                 billingCycle === 'annual'
-                  ? 'bg-white text-blue-600 shadow-lg'
+                  ? 'bg-white text-public-deep shadow-lg'
                   : 'text-white hover:bg-white/10'
               }`}
             >
@@ -255,7 +255,7 @@ const Pricing = () => {
                 '24/7 support'
               ].map((item, index) => (
                 <div key={index} className="flex items-center justify-center gap-2 text-gray-700">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 bg-gradient-to-br from-public-medium to-public-deep rounded-full flex items-center justify-center flex-shrink-0">
                     <FiCheck className="w-5 h-5 text-white" />
                   </div>
                   <span className="font-medium">{item}</span>
@@ -287,7 +287,7 @@ const Pricing = () => {
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                <thead className="bg-gradient-to-r from-public-medium to-public-deep text-white">
                   <tr>
                     <th className="px-6 py-4 text-left">Feature</th>
                     <th className="px-6 py-4 text-center">Basic</th>
@@ -339,7 +339,7 @@ const Pricing = () => {
                 className="group bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 hover:shadow-lg transition-shadow"
               >
                 <summary className="flex items-start gap-4 cursor-pointer list-none">
-                  <FiHelpCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <FiHelpCircle className="w-6 h-6 text-public-deep flex-shrink-0 mt-1" />
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-gray-900 mb-2">{faq.question}</h3>
                   </div>
@@ -355,7 +355,7 @@ const Pricing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-public-deep to-public-navy relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px)',
@@ -366,19 +366,19 @@ const Pricing = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-public-light mb-8">
             Start your 14-day free trial. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
+              className="px-8 py-4 bg-white text-public-deep rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
             >
               Start Free Trial
             </Link>
             <Link
               to="/login"
-              className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all"
+              className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-public-deep transition-all"
             >
               Try Demo
             </Link>

@@ -170,7 +170,7 @@ const Features = () => {
   return (
     <PublicLayout>
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-public-deep to-public-navy overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
@@ -185,12 +185,12 @@ const Features = () => {
             Powerful Features for
             <span className="block mt-2">Modern Education</span>
           </h1>
-          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8">
+          <p className="text-xl md:text-2xl text-public-light max-w-3xl mx-auto mb-8">
             Everything you need to manage your educational institution efficiently
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-public-deep rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
           >
             Get Started Free
             <FiArrowRight className="w-5 h-5" />
@@ -271,7 +271,7 @@ const Features = () => {
                   'Email Services'
                 ].map((integration, index) => (
                   <div key={index} className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 bg-gradient-to-br from-public-medium to-public-deep rounded-lg flex items-center justify-center flex-shrink-0">
                       <FiCheckCircle className="w-5 h-5 text-white" />
                     </div>
                     <span className="font-medium text-gray-900">{integration}</span>
@@ -327,7 +327,7 @@ const Features = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-public-deep to-public-navy relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px)',
@@ -338,19 +338,19 @@ const Features = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-public-light mb-8">
             Experience the power of SkoolMaster with a free trial
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
+              className="px-8 py-4 bg-white text-public-deep rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
             >
               Start Free Trial
             </Link>
             <Link
               to="/pricing"
-              className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all"
+              className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-public-deep transition-all"
             >
               View Pricing
             </Link>

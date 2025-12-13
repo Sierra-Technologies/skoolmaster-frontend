@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme CSS Variables */
+/* Portal Theme CSS Variables - Default for dashboard/portal pages */
 :root {
   --color-primary: #3B82F6;
   --color-primary-dark: #2563EB;
@@ -17,6 +17,22 @@
   --color-surface: #FFFFFF;
   --color-text: #111827;
   --color-text-secondary: #6B7280;
+}
+
+/* Public Pages Design System - Professional Blue Palette */
+[data-section="public"] {
+  --color-public-light: #ADE1FB;
+  --color-public-medium: #266CA9;
+  --color-public-deep: #0F2573;
+  --color-public-navy: #041D56;
+  --color-public-darkest: #01082D;
+
+  /* Public page specific variables */
+  --public-bg-gradient-from: #0F2573;
+  --public-bg-gradient-to: #041D56;
+  --public-btn-gradient-from: #266CA9;
+  --public-btn-gradient-to: #0F2573;
+  --public-text-light: #ADE1FB;
 }
 
 [data-theme="forest"] {

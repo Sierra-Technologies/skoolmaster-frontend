@@ -30,7 +30,7 @@ const PublicLayout = ({ children }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" data-section="public">
       {/* Navigation */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -43,10 +43,10 @@ const PublicLayout = ({ children }) => {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-xl transition-shadow">
+              <div className="w-10 h-10 bg-gradient-to-br from-public-medium to-public-deep rounded-xl flex items-center justify-center shadow-md group-hover:shadow-xl transition-shadow">
                 <span className="text-white font-bold text-xl">S</span>
               </div>
-              <span className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+              <span className="text-xl font-bold text-gray-900 group-hover:text-public-medium transition-colors">
                 SkoolMaster
               </span>
             </Link>
@@ -57,13 +57,13 @@ const PublicLayout = ({ children }) => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-gray-700 hover:text-blue-600 transition-colors font-medium relative group ${
-                    location.pathname === link.path ? 'text-blue-600' : ''
+                  className={`text-gray-700 hover:text-public-medium transition-colors font-medium relative group ${
+                    location.pathname === link.path ? 'text-public-medium' : ''
                   }`}
                 >
                   {link.name}
                   <span
-                    className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform origin-left transition-transform ${
+                    className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-public-medium to-public-deep transform origin-left transition-transform ${
                       location.pathname === link.path
                         ? 'scale-x-100'
                         : 'scale-x-0 group-hover:scale-x-100'
@@ -73,7 +73,7 @@ const PublicLayout = ({ children }) => {
               ))}
               <Link
                 to="/login"
-                className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:shadow-lg transition-all font-medium transform hover:scale-105"
+                className="px-6 py-2 bg-gradient-to-r from-public-medium to-public-deep text-white rounded-lg hover:shadow-lg transition-all font-medium transform hover:scale-105"
               >
                 Sign In
               </Link>
@@ -108,7 +108,7 @@ const PublicLayout = ({ children }) => {
               ))}
               <Link
                 to="/login"
-                className="block w-full px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg text-center font-medium"
+                className="block w-full px-4 py-2 bg-gradient-to-r from-public-medium to-public-deep text-white rounded-lg text-center font-medium"
               >
                 Sign In
               </Link>
@@ -127,7 +127,7 @@ const PublicLayout = ({ children }) => {
             {/* Company Info */}
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-public-medium to-public-deep rounded-xl flex items-center justify-center">
                   <span className="text-white font-bold text-xl">S</span>
                 </div>
                 <span className="text-xl font-bold">SkoolMaster</span>

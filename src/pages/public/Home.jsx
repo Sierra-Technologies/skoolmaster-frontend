@@ -54,7 +54,7 @@ const Home = () => {
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
                 Simplify Your
-                <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mt-2">
+                <span className="block bg-gradient-to-r from-public-deep to-public-navy bg-clip-text text-transparent mt-2">
                   School Management
                 </span>
               </h1>
@@ -67,14 +67,14 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link
                   to="/contact"
-                  className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+                  className="group px-8 py-4 bg-gradient-to-r from-public-medium to-public-deep text-white rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-2"
                 >
                   Get Started Free
                   <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   to="/login"
-                  className="px-8 py-4 bg-white text-gray-700 border-2 border-gray-300 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 hover:shadow-lg transition-all"
+                  className="px-8 py-4 bg-white text-gray-700 border-2 border-gray-300 rounded-xl font-semibold hover:border-public-medium hover:text-public-medium hover:shadow-lg transition-all"
                 >
                   Try Demo
                 </Link>
@@ -88,7 +88,7 @@ const Home = () => {
                   { value: '10K+', label: 'Teachers' }
                 ].map((stat, index) => (
                   <div key={index} className="text-center lg:text-left">
-                    <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-public-medium to-public-deep bg-clip-text text-transparent">
                       {stat.value}
                     </div>
                     <div className="text-sm md:text-base text-gray-600 font-medium">{stat.label}</div>
@@ -112,7 +112,7 @@ const Home = () => {
 
                   {/* Center Icon */}
                   <div className="relative z-10 text-center space-y-4">
-                    <div className="w-32 h-32 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full mx-auto flex items-center justify-center shadow-2xl transform hover:rotate-12 transition-transform duration-500">
+                    <div className="w-32 h-32 bg-gradient-to-br from-public-medium to-public-deep rounded-full mx-auto flex items-center justify-center shadow-2xl transform hover:rotate-12 transition-transform duration-500">
                       <FiBook className="w-16 h-16 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900">All-in-One Platform</h3>
@@ -170,7 +170,7 @@ const Home = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">SkoolMaster</span>
+              Why Choose <span className="bg-gradient-to-r from-public-medium to-public-deep bg-clip-text text-transparent">SkoolMaster</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Trusted by educational institutions worldwide
@@ -217,7 +217,7 @@ const Home = () => {
           <div className="text-center mt-12">
             <Link
               to="/features"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-public-medium to-public-deep text-white rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
             >
               Explore All Features
               <FiArrowRight className="w-5 h-5" />
@@ -293,7 +293,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-public-deep to-public-navy relative overflow-hidden">
         {/* Animated Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -305,19 +305,19 @@ const Home = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Transform Your School?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-public-light mb-8">
             Join 500+ schools already using SkoolMaster to streamline their operations
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
+              className="px-8 py-4 bg-white text-public-deep rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
             >
               Start Free Trial
             </Link>
             <Link
               to="/pricing"
-              className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-all"
+              className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-public-deep transition-all"
             >
               View Pricing
             </Link>
