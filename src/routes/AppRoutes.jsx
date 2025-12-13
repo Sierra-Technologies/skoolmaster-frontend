@@ -48,6 +48,12 @@ import StudentFees from '../pages/student/Fees';
 
 // Parent Pages
 import ParentDashboard from '../pages/parent/Dashboard';
+import ParentChildren from '../pages/parent/Children';
+import ParentGrades from '../pages/parent/Grades';
+import ParentAttendance from '../pages/parent/Attendance';
+import ParentFees from '../pages/parent/Fees';
+import ParentCommunication from '../pages/parent/Communication';
+import ParentTimetable from '../pages/parent/Timetable';
 
 // Not Found
 import NotFound from '../pages/NotFound';
@@ -353,6 +359,54 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute allowedRoles={['parent']}>
               <ParentDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/parent/children"
+          element={
+            <ProtectedRoute allowedRoles={['parent']}>
+              <ParentChildren />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/parent/grades"
+          element={
+            <ProtectedRoute allowedRoles={['parent']}>
+              <ParentGrades />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/parent/attendance"
+          element={
+            <ProtectedRoute allowedRoles={['parent']}>
+              <ParentAttendance />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/parent/fees"
+          element={
+            <ProtectedRoute allowedRoles={['parent']}>
+              <ParentFees />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/parent/communication"
+          element={
+            <ProtectedRoute allowedRoles={['parent']}>
+              <ParentCommunication />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/parent/timetable"
+          element={
+            <ProtectedRoute allowedRoles={['parent']}>
+              <ParentTimetable />
             </ProtectedRoute>
           }
         />
