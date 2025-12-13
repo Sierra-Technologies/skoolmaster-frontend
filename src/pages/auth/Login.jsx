@@ -143,17 +143,17 @@ const Login = () => {
       <Toaster position="top-right" />
 
       {/* Left Side - Branding & Features */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#0F2573] via-[#041D56] to-[#01082D] relative overflow-hidden">
         {/* Animated Background Elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-[#266CA9] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#ADE1FB] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
 
         <div className="relative z-10 flex flex-col justify-center px-16 py-12 text-white">
           {/* Logo */}
           <div className="flex items-center gap-3 mb-12">
-            <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-xl">
+            <div className="w-14 h-14 bg-gradient-to-br from-[#266CA9] to-[#0F2573] rounded-2xl flex items-center justify-center shadow-xl">
               <span className="text-3xl font-bold">S</span>
             </div>
             <div>
@@ -199,7 +199,7 @@ const Login = () => {
               { label: 'Teachers', value: '10K+' }
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl font-bold mb-1">{stat.value}</div>
+                <div className="text-3xl font-bold mb-1 text-[#ADE1FB]">{stat.value}</div>
                 <div className="text-blue-200 text-sm">{stat.label}</div>
               </div>
             ))}
@@ -212,7 +212,7 @@ const Login = () => {
         <div className="max-w-md w-full">
           {/* Mobile Logo */}
           <div className="lg:hidden text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl mb-4 shadow-lg">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#266CA9] to-[#0F2573] rounded-2xl mb-4 shadow-lg">
               <span className="text-white font-bold text-2xl">S</span>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">SkoolMaster</h1>
@@ -336,7 +336,7 @@ const Login = () => {
 
             <Button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all"
+              className="w-full py-3 bg-gradient-to-r from-[#266CA9] to-[#0F2573] hover:from-[#0F2573] hover:to-[#041D56] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all"
               loading={loading}
               disabled={loading}
             >
@@ -345,9 +345,17 @@ const Login = () => {
           </form>
 
           {/* Footer */}
-          <p className="mt-8 text-center text-sm text-gray-500">
-            © 2024 SkoolMaster. All rights reserved.
-          </p>
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-600">
+              Don't have an account?{' '}
+              <a href="/register" className="text-[#266CA9] hover:text-[#0F2573] font-semibold">
+                Start Free Trial
+              </a>
+            </p>
+            <p className="mt-4 text-sm text-gray-500">
+              © 2024 SkoolMaster. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import Contact from '../pages/public/Contact';
 
 // Auth Pages
 import Login from '../pages/auth/Login';
+import Register from '../pages/auth/Register';
 
 // Super Admin Pages
 import SuperAdminDashboard from '../pages/superadmin/Dashboard';
@@ -92,6 +93,7 @@ const AppRoutes = () => {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={user ? <Navigate to={getDefaultRoute()} /> : <Login />} />
+        <Route path="/register" element={user ? <Navigate to={getDefaultRoute()} /> : <Register />} />
 
         {/* Super Admin Routes */}
         <Route
