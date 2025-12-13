@@ -63,7 +63,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       case 'student':
         return [
           { icon: <FiHome />, label: 'Dashboard', path: '/student/dashboard' },
-          { icon: <FiBook />, label: 'My Classes', path: '/student/classes' },
+          { icon: <FiBook />, label: 'My Classes', path: '/student/my-classes' },
           { icon: <FiAward />, label: 'Grades', path: '/student/grades' },
           { icon: <FiUserCheck />, label: 'Attendance', path: '/student/attendance' },
           { icon: <FiFileText />, label: 'Assignments', path: '/student/assignments' },
