@@ -3,7 +3,11 @@ import { useAuth } from '../context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
 
 // Public Pages
-import Landing from '../pages/Landing';
+import Home from '../pages/public/Home';
+import About from '../pages/public/About';
+import Features from '../pages/public/Features';
+import Pricing from '../pages/public/Pricing';
+import Contact from '../pages/public/Contact';
 
 // Auth Pages
 import Login from '../pages/auth/Login';
@@ -82,7 +86,11 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={user ? <Navigate to={getDefaultRoute()} /> : <Login />} />
 
         {/* Super Admin Routes */}
