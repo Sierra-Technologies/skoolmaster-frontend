@@ -1,386 +1,182 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PublicLayout from '../../components/layout/PublicLayout';
-import { FiCheck, FiArrowRight, FiHelpCircle } from 'react-icons/fi';
+import { FiCheck } from 'react-icons/fi';
 
 const Pricing = () => {
-  const [billingCycle, setBillingCycle] = useState('monthly'); // 'monthly' or 'annual'
-
   const plans = [
     {
-      name: 'Basic',
+      name: 'Starter',
+      price: '$99',
+      period: 'per month',
       description: 'Perfect for small schools',
-      monthlyPrice: 99,
-      annualPrice: 950,
       features: [
         'Up to 100 students',
-        'Basic student management',
+        'Student management',
         'Attendance tracking',
         'Grade management',
-        'Email support',
-        'Mobile app access',
-        'Basic reports',
-        '5 GB storage'
+        'Basic reporting',
+        'Email support'
       ],
-      popular: false,
-      color: 'from-blue-500 to-blue-600'
+      popular: false
     },
     {
       name: 'Professional',
-      description: 'Most popular choice',
-      monthlyPrice: 299,
-      annualPrice: 2870,
+      price: '$299',
+      period: 'per month',
+      description: 'Ideal for growing schools',
       features: [
         'Up to 500 students',
-        'Advanced student management',
-        'Parent portal',
+        'All Starter features',
         'Fee management',
-        'Priority support',
-        'Custom branding',
-        'API access',
-        'Data export',
+        'Communication hub',
         'Advanced analytics',
-        'SMS notifications',
-        'Unlimited storage'
+        'Parent portal',
+        'Priority support',
+        'Custom branding'
       ],
-      popular: true,
-      color: 'from-purple-500 to-purple-600',
-      badge: 'Most Popular'
+      popular: true
     },
     {
       name: 'Enterprise',
+      price: 'Custom',
+      period: 'contact us',
       description: 'For large institutions',
-      monthlyPrice: null,
-      annualPrice: null,
-      customPrice: true,
       features: [
         'Unlimited students',
-        'Multi-campus support',
-        'Dedicated account manager',
+        'All Professional features',
+        'Multiple campuses',
+        'API access',
         'Custom integrations',
+        'Dedicated account manager',
         '24/7 phone support',
-        'Training & onboarding',
-        'SLA guarantee',
-        'Custom features',
-        'White-labeling',
-        'Advanced security',
-        'Custom workflows',
-        'Dedicated infrastructure'
+        'SLA guarantee'
       ],
-      popular: false,
-      color: 'from-pink-500 to-pink-600'
+      popular: false
     }
   ];
-
-  const faqs = [
-    {
-      question: 'Can I change my plan later?',
-      answer: 'Yes! You can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.'
-    },
-    {
-      question: 'Is there a free trial?',
-      answer: 'Absolutely! We offer a 14-day free trial for all plans. No credit card required to get started.'
-    },
-    {
-      question: 'What payment methods do you accept?',
-      answer: 'We accept all major credit cards, debit cards, and bank transfers. For Enterprise plans, we also offer invoice-based billing.'
-    },
-    {
-      question: 'Do you offer discounts for annual billing?',
-      answer: 'Yes! When you choose annual billing, you save approximately 20% compared to monthly billing.'
-    },
-    {
-      question: 'What happens when I exceed my student limit?',
-      answer: 'We\'ll notify you when you\'re approaching your limit. You can easily upgrade to a higher plan to accommodate more students.'
-    },
-    {
-      question: 'Is my data secure?',
-      answer: 'Absolutely! We use bank-level encryption and comply with international data protection regulations including GDPR and FERPA.'
-    }
-  ];
-
-  const getPrice = (plan) => {
-    if (plan.customPrice) return 'Custom';
-    const price = billingCycle === 'monthly' ? plan.monthlyPrice : plan.annualPrice;
-    return `$${price}`;
-  };
-
-  const getPeriod = (plan) => {
-    if (plan.customPrice) return 'Contact us';
-    return billingCycle === 'monthly' ? '/ month' : '/ year';
-  };
-
-  const getSavings = (plan) => {
-    if (plan.customPrice || !plan.annualPrice) return null;
-    const monthlyCost = plan.monthlyPrice * 12;
-    const savings = monthlyCost - plan.annualPrice;
-    const percentage = Math.round((savings / monthlyCost) * 100);
-    return `Save ${percentage}%`;
-  };
 
   return (
     <PublicLayout>
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-public-deep to-public-navy overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-pink-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px)',
-          }}></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+      <section className="relative bg-gradient-to-br from-[#0F2573] to-[#041D56] text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Simple, Transparent Pricing
           </h1>
-          <p className="text-xl md:text-2xl text-public-light max-w-3xl mx-auto mb-8">
-            Choose the perfect plan for your school. No hidden fees.
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            Choose the perfect plan for your school
           </p>
-
-          {/* Billing Toggle */}
-          <div className="inline-flex items-center gap-4 bg-white/20 backdrop-blur-sm p-2 rounded-xl">
-            <button
-              onClick={() => setBillingCycle('monthly')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                billingCycle === 'monthly'
-                  ? 'bg-white text-public-deep shadow-lg'
-                  : 'text-white hover:bg-white/10'
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setBillingCycle('annual')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2 ${
-                billingCycle === 'annual'
-                  ? 'bg-white text-public-deep shadow-lg'
-                  : 'text-white hover:bg-white/10'
-              }`}
-            >
-              Annual
-              <span className="px-2 py-1 bg-green-500 text-white text-xs rounded-full">
-                Save 20%
-              </span>
-            </button>
-          </div>
         </div>
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        {/* Background Decoration */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50 to-transparent opacity-50"></div>
-        <div className="absolute bottom-0 left-0 w-1/3 h-full bg-gradient-to-r from-purple-50 to-transparent opacity-50"></div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative bg-white border-2 rounded-3xl p-8 transition-all ${
-                  plan.popular
-                    ? 'border-transparent shadow-2xl transform scale-105'
-                    : 'border-gray-200 hover:border-blue-300 hover:shadow-xl'
+                className={`bg-white rounded-2xl shadow-lg overflow-hidden ${
+                  plan.popular ? 'ring-2 ring-[#266CA9] transform scale-105' : ''
                 }`}
               >
-                {/* Popular Badge */}
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="inline-block px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-bold rounded-full shadow-lg">
-                      {plan.badge}
-                    </span>
+                  <div className="bg-gradient-to-r from-[#266CA9] to-[#0F2573] text-white text-center py-2 font-semibold">
+                    Most Popular
                   </div>
                 )}
-
-                {/* Header */}
-                <div className="text-center mb-8">
+                <div className="p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
                   <p className="text-gray-600 mb-6">{plan.description}</p>
-
-                  <div className="flex items-baseline justify-center gap-2 mb-2">
-                    <span className={`text-5xl font-bold bg-gradient-to-r ${plan.color} bg-clip-text text-transparent`}>
-                      {getPrice(plan)}
-                    </span>
-                    {!plan.customPrice && (
-                      <span className="text-gray-600">{getPeriod(plan)}</span>
-                    )}
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                    {plan.price !== 'Custom' && <span className="text-gray-600">/{plan.period}</span>}
                   </div>
-
-                  {billingCycle === 'annual' && getSavings(plan) && (
-                    <div className="inline-block px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
-                      {getSavings(plan)}
-                    </div>
-                  )}
-                </div>
-
-                {/* Features */}
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <div className={`flex-shrink-0 w-6 h-6 bg-gradient-to-br ${plan.color} rounded-full flex items-center justify-center mt-0.5`}>
-                        <FiCheck className="w-4 h-4 text-white" />
+                  <Link
+                    to="/contact"
+                    className={`block w-full py-3 px-6 rounded-lg font-semibold text-center transition-all ${
+                      plan.popular
+                        ? 'bg-gradient-to-r from-[#266CA9] to-[#0F2573] text-white hover:shadow-xl'
+                        : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                    }`}
+                  >
+                    Get Started
+                  </Link>
+                  <div className="mt-8 space-y-4">
+                    {plan.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-start gap-3">
+                        <FiCheck className="w-5 h-5 text-[#266CA9] flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{feature}</span>
                       </div>
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA Button */}
-                <Link
-                  to="/contact"
-                  className={`group w-full py-4 bg-gradient-to-r ${plan.color} text-white rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-2`}
-                >
-                  {plan.customPrice ? 'Contact Sales' : 'Get Started'}
-                  <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-
-                {/* Background Gradient Effect */}
-                {plan.popular && (
-                  <div className={`absolute inset-0 bg-gradient-to-br ${plan.color} opacity-5 rounded-3xl pointer-events-none`}></div>
-                )}
+                    ))}
+                  </div>
+                </div>
               </div>
             ))}
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="mt-16 text-center">
-            <p className="text-gray-600 mb-8">All plans include:</p>
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                '14-day free trial',
-                'No credit card required',
-                'Cancel anytime',
-                '24/7 support'
-              ].map((item, index) => (
-                <div key={index} className="flex items-center justify-center gap-2 text-gray-700">
-                  <div className="w-8 h-8 bg-gradient-to-br from-public-medium to-public-deep rounded-full flex items-center justify-center flex-shrink-0">
-                    <FiCheck className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="font-medium">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison Table */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-400 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        </div>
-
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Compare Plans
-            </h2>
-            <p className="text-xl text-gray-600">
-              Choose the features that matter most to you
-            </p>
-          </div>
-
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-gradient-to-r from-public-medium to-public-deep text-white">
-                  <tr>
-                    <th className="px-6 py-4 text-left">Feature</th>
-                    <th className="px-6 py-4 text-center">Basic</th>
-                    <th className="px-6 py-4 text-center">Professional</th>
-                    <th className="px-6 py-4 text-center">Enterprise</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {[
-                    ['Students', '100', '500', 'Unlimited'],
-                    ['Parent Portal', '-', '✓', '✓'],
-                    ['Fee Management', '-', '✓', '✓'],
-                    ['Custom Branding', '-', '✓', '✓'],
-                    ['API Access', '-', '✓', '✓'],
-                    ['Multi-campus', '-', '-', '✓'],
-                    ['White-labeling', '-', '-', '✓'],
-                    ['Dedicated Support', '-', '-', '✓']
-                  ].map((row, index) => (
-                    <tr key={index} className="hover:bg-blue-50 transition-colors">
-                      <td className="px-6 py-4 font-medium text-gray-900">{row[0]}</td>
-                      <td className="px-6 py-4 text-center text-gray-600">{row[1]}</td>
-                      <td className="px-6 py-4 text-center text-gray-600">{row[2]}</td>
-                      <td className="px-6 py-4 text-center text-gray-600">{row[3]}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Got questions? We've got answers.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <details
-                key={index}
-                className="group bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 hover:shadow-lg transition-shadow"
-              >
-                <summary className="flex items-start gap-4 cursor-pointer list-none">
-                  <FiHelpCircle className="w-6 h-6 text-public-deep flex-shrink-0 mt-1" />
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{faq.question}</h3>
-                  </div>
-                  <FiArrowRight className="w-5 h-5 text-gray-400 group-open:rotate-90 transition-transform flex-shrink-0 mt-1" />
-                </summary>
-                <div className="mt-4 ml-10 text-gray-600 leading-relaxed">
-                  {faq.answer}
-                </div>
-              </details>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6">
+            {[
+              {
+                question: 'Is there a free trial?',
+                answer: 'Yes! We offer a 14-day free trial with full access to all features. No credit card required.'
+              },
+              {
+                question: 'Can I change plans later?',
+                answer: 'Absolutely! You can upgrade or downgrade your plan at any time. Changes take effect immediately.'
+              },
+              {
+                question: 'What payment methods do you accept?',
+                answer: 'We accept all major credit cards, debit cards, and bank transfers for enterprise plans.'
+              },
+              {
+                question: 'Is my data secure?',
+                answer: 'Yes! We use bank-level encryption and security measures to protect your data. We are fully GDPR compliant.'
+              },
+              {
+                question: 'Do you offer discounts for non-profits?',
+                answer: 'Yes, we offer special pricing for non-profit educational institutions. Contact us for details.'
+              }
+            ].map((faq, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{faq.question}</h3>
+                <p className="text-gray-700">{faq.answer}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-public-deep to-public-navy relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px)',
-          }}></div>
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+      <section className="py-20 bg-gradient-to-r from-[#266CA9] to-[#0F2573] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-public-light mb-8">
-            Start your 14-day free trial. No credit card required.
+          <p className="text-xl text-blue-100 mb-8">
+            Start your free trial today, no credit card required
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-white text-public-deep rounded-xl font-semibold hover:shadow-2xl transition-all transform hover:scale-105"
+              className="px-8 py-4 bg-white text-[#0F2573] rounded-lg font-semibold hover:shadow-xl transition-all"
             >
               Start Free Trial
             </Link>
             <Link
-              to="/login"
-              className="px-8 py-4 bg-transparent text-white border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-public-deep transition-all"
+              to="/features"
+              className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-[#0F2573] transition-all"
             >
-              Try Demo
+              View Features
             </Link>
           </div>
         </div>
