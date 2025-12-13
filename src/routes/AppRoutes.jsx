@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
 
+// Public Pages
+import Landing from '../pages/Landing';
+
 // Auth Pages
 import Login from '../pages/auth/Login';
 
@@ -79,7 +82,8 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={user ? <Navigate to={getDefaultRoute()} /> : <Login />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={user ? <Navigate to={getDefaultRoute()} /> : <Login />} />
 
         {/* Super Admin Routes */}
         <Route
