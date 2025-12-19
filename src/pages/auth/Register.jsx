@@ -9,7 +9,7 @@ import {
   FiMapPin,
   FiGlobe,
   FiCheckCircle,
-  FiBuilding,
+  FiHome,
   FiUsers
 } from 'react-icons/fi';
 
@@ -219,7 +219,7 @@ const Register = () => {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <FiBuilding className="h-5 w-5 text-gray-400" />
+                    <FiHome className="h-5 w-5 text-gray-400" />
                   </div>
                   <input
                     type="text"
@@ -267,7 +267,7 @@ const Register = () => {
                     value={formData.schoolPhone}
                     onChange={handleChange}
                     className="block w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#266CA9] focus:border-transparent transition-all"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+232 76 685170"
                     required
                   />
                 </div>
@@ -332,7 +332,7 @@ const Register = () => {
                   value={formData.schoolCountry}
                   onChange={handleChange}
                   className="block w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#266CA9] focus:border-transparent transition-all"
-                  placeholder="United States"
+                  placeholder="Sierra Leone"
                 />
               </div>
 
@@ -438,7 +438,7 @@ const Register = () => {
                     value={formData.adminPhone}
                     onChange={handleChange}
                     className="block w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#266CA9] focus:border-transparent transition-all"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+232 76 685170"
                   />
                 </div>
               </div>
