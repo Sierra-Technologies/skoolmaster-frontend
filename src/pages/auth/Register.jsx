@@ -9,7 +9,6 @@ import {
   FiMapPin,
   FiGlobe,
   FiCheckCircle,
-  FiHome,
   FiUsers
 } from 'react-icons/fi';
 
@@ -219,7 +218,9 @@ const Register = () => {
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <FiHome className="h-5 w-5 text-gray-400" />
+
+                    <FiUser className="h-5 w-5 text-gray-400" />
+
                   </div>
                   <input
                     type="text"
