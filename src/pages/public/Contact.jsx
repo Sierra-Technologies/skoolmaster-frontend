@@ -71,7 +71,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-700">+1 (555) 123-4567</p>
+                    <p className="text-gray-700">+232 76 685170</p>
                     <p className="text-sm text-gray-600">Monday - Friday, 9am - 6pm EST</p>
                   </div>
                 </div>
@@ -82,9 +82,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Office</h3>
-                    <p className="text-gray-700">123 Education Street</p>
-                    <p className="text-gray-700">Tech City, TC 12345</p>
-                    <p className="text-gray-700">United States</p>
+                    <p className="text-gray-700">6 Sierratell Drive</p>
+                    <p className="text-gray-700">Hill Station, Freetown</p>
+                    <p className="text-gray-700">Sierra Leone</p>
                   </div>
                 </div>
               </div>
@@ -152,7 +152,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#266CA9] focus:border-transparent outline-none transition-all"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+232 76 685170"
                   />
                 </div>
 

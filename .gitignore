@@ -1,3 +1,7 @@
+# ============================================
+# FRONTEND (React + Vite)
+# ============================================
+
 # Logs
 logs
 *.log
@@ -12,7 +16,64 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# ============================================
+# BACKEND (Django)
+# ============================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+backend/venv/
+backend/env/
+backend/ENV/
+backend/.venv
+
+# Django
+backend/*.log
+backend/local_settings.py
+backend/db.sqlite3
+backend/db.sqlite3-journal
+backend/media
+backend/staticfiles
+backend/static
+
+# Environment Variables
+.env
+.env.local
+backend/.env
+
+# Celery
+backend/celerybeat-schedule
+backend/celerybeat.pid
+
+# Test
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ============================================
+# EDITOR & OS
+# ============================================
+
 .vscode/*
 !.vscode/extensions.json
 .idea

@@ -31,7 +31,7 @@ const StudentProfile = () => {
     firstName: 'John',
     lastName: 'Doe',
     email: 'john.doe@school.com',
-    phone: '+1 (555) 123-4567',
+    phone: '+232 76 685170',
     dateOfBirth: '2005-06-15',
     gender: 'Male',
     bloodGroup: 'O+',

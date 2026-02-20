@@ -572,13 +572,13 @@ const Landing = () => {
                   {
                     icon: <FiPhone className="w-6 h-6" />,
                     title: 'Phone',
-                    value: '+1 (555) 123-4567',
+                    value: '+232 76 685170',
                     color: 'from-green-500 to-green-600'
                   },
                   {
                     icon: <FiMapPin className="w-6 h-6" />,
                     title: 'Office',
-                    value: '123 Education Street, Tech City, TC 12345',
+                    value: '6 Sierratell Drive, Hill Station, Freetown',
                     color: 'from-purple-500 to-purple-600'
                   }
                 ].map((contact, index) => (
@@ -650,7 +650,7 @@ const Landing = () => {
                     value={contactForm.phone}
                     onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
                     className="w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+232 76 685170"
                   />
                 </div>
 

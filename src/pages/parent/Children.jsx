@@ -37,7 +37,7 @@ const ParentChildren = () => {
       gender: 'Male',
       bloodGroup: 'O+',
       email: 'john.doe@school.com',
-      phone: '+1 (555) 123-4567',
+      phone: '+232 76 685170',
       address: '123 Main Street, New York, NY 10001',
 
       // Academic Performance
